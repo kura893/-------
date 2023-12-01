@@ -30,23 +30,23 @@ function PMGame() {
     image(lifeheart,150,470,40,35);
   }
 
-      if (!startTime2 && keyIsDown(ARROW)) {
+      if (!startTime2 && keyPressed) {
         startTime2 = millis(); // 게임 시작 시간 기록
       } 
 
       if (startTime2 !== undefined) {
         // 시간 경과 계산
-        let elapsedTime = (millis() - startTime2) / 1000; // 밀리초를 초로 변환
+        let elapsedTime2 = (millis() - startTime2) / 1000; // 밀리초를 초로 변환
 
         // 타임 어택 내 목표 아이템값 못 채우면 실패
-        if (elapsedTime >= timeLimit2 && items.length > 0) {
+        if (elapsedTime2 >= timeLimit2 && items.length > 0) {
           gameStage = 12;
         } else {
           // 남은 시간을 소수점 이하 두 자리까지 표시
-          let remainingTime = max(0, timeLimit2 - elapsedTime);
+          let remainingTime2 = max(0, timeLimit2 - elapsedTime2);
           fill(220);
           textSize(25);
-          text("남은 시간: " + nf(floor(remainingTime), 0, 0) + " 초", 800, 40);
+          text("남은 시간: " + nf(floor(remainingTime2), 0, 0) + " 초", 800, 40);
         }
       }
 
@@ -185,7 +185,7 @@ function createVillain() {
 
 function handleVillains() {
   // 프레임당 2%의 확률로 빌런 생성
-  if (random(0, 1) < 0.035) {
+  if (random(0, 1) < 0.02) {
     villains.push(createVillain());
   }
 
