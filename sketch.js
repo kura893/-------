@@ -187,13 +187,15 @@ function draw() {
                 gameStage = 7;
                 break;
             // 필요한 만큼 계속해서 추가
-
             case 7:
                 gameStage = 10;
                 break;
             // 필요한 만큼 계속해서 추가
             case 8:
                 gameStage = 9;
+                break;
+            case 9:
+                gameStage = 10;
                 break;
             case 10:
                 gameStage = 11;
