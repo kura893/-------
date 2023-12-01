@@ -73,7 +73,7 @@ function BPGame() {
       
       // 게이지 감소 로직
       if (buttonPressed) {
-        gaugeValue = max(0, gaugeValue - decreaseRate*0.5);
+        gaugeValue = max(0, gaugeValue - decreaseRate*0.4);
       }
 
       if (buttonPressed == true) {
