@@ -6,6 +6,7 @@ let villains = [];
 let lives = 3;
 //let startTime; // 게임 시작 시간
 let timeLimit2 = 15; // 스테이지2 타임 어택 시간 제한 (초)
+let startTime2;
 
 function setup() {
   createCanvas(980, 530);
@@ -29,13 +30,13 @@ function PMGame() {
     image(lifeheart,150,470,40,35);
   }
 
-      if (!startTime && keyPressed) {
-        startTime = millis(); // 게임 시작 시간 기록
+      if (!startTime2 && keyIsDown(ARROW)) {
+        startTime2 = millis(); // 게임 시작 시간 기록
       } 
 
-      if (startTime !== undefined) {
+      if (startTime2 !== undefined) {
         // 시간 경과 계산
-        let elapsedTime = (millis() - startTime) / 1000; // 밀리초를 초로 변환
+        let elapsedTime = (millis() - startTime2) / 1000; // 밀리초를 초로 변환
 
         // 타임 어택 내 목표 아이템값 못 채우면 실패
         if (elapsedTime >= timeLimit2 && items.length > 0) {
