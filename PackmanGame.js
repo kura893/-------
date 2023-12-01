@@ -91,8 +91,8 @@ function createPlayer() {
     },
     
     move: function (dirX, dirY) {
-      this.x += dirX * 10;
-      this.y += dirY * 10;
+      this.x += dirX * 12;
+      this.y += dirY * 12;
       this.x = constrain(this.x, this.radius, width - this.radius);
       this.y = constrain(this.y, 60 + this.radius, 430 - this.radius);
     },
@@ -177,7 +177,7 @@ function createVillain() {
       this.y = constrain(this.y, 100, 330);
     },
     move: function () {
-      this.x -= 13; // 왼쪽으로 이동
+      this.x -= 15; // 왼쪽으로 이동
     },
 
   };
@@ -185,7 +185,7 @@ function createVillain() {
 
 function handleVillains() {
   // 프레임당 2%의 확률로 빌런 생성
-  if (random(0, 1) < 0.02) {
+  if (random(0, 1) < 0.03) {
     villains.push(createVillain());
   }
 
