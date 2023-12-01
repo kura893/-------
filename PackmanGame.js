@@ -177,7 +177,7 @@ function createVillain() {
       this.y = constrain(this.y, 100, 330);
     },
     move: function () {
-      this.x -= 15; // 왼쪽으로 이동
+      this.x -= 13; // 왼쪽으로 이동
     },
 
   };
