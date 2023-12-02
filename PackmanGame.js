@@ -8,11 +8,6 @@ let lives = 3;
 let timeLimit2 = 15; // 스테이지2 타임 어택 시간 제한 (초)
 let startTime2;
 
-//function setup() {
-  //createCanvas(980, 530);
-  //player = createPlayer();
-  //createItems(10); // 생성되는 아이템값
-//}
 
 function createPlayer() {
   return {

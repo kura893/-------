@@ -41,24 +41,26 @@ function preload(){
     item = loadImage("images/item.png");
 
     //스테이지3 프리로드
-    //redImages[0] = loadImage('images/redtalk1.png');
-    //redImages[1] = loadImage('images/redtalk2.png');
-    //redImages[2] = loadImage('images/redtalk3.png');
-    //redImages[3] = loadImage('images/redtalk4.png');
-    //blueImages[0] = loadImage('images/bluetalk1.png')
-    //blueImages[1] = loadImage('images/bluetalk2.png')
-    //blueImages[2] = loadImage('images/bluetalk3.png')
-    //blueImages[3] = loadImage('images/bluetalk4.png')
-    //blueImages[4] = loadImage('images/bluetalk5.png')
+    redImages[0] = loadImage('images/redtalk1.png');
+    redImages[1] = loadImage('images/redtalk2.png');
+    redImages[2] = loadImage('images/redtalk3.png');
+    redImages[3] = loadImage('images/redtalk4.png');
+    blueImages[0] = loadImage('images/bluetalk1.png')
+    blueImages[1] = loadImage('images/bluetalk2.png')
+    blueImages[2] = loadImage('images/bluetalk3.png')
+    blueImages[3] = loadImage('images/bluetalk4.png')
+    blueImages[4] = loadImage('images/bluetalk5.png')
     ys3_1 = loadImage("images/ys3_1.png");
     sc3_1 = loadImage("images/sc3_1.png");
+    mall4 = loadImage("images/mall4.png");
+
     
     }
 
 function setup() {
   createCanvas(980, 530);
 
-  powerMeter = createPowerMeter(width / 2, height - 50, 400, 40);
+  powerMeter = createPowerMeter(width / 2, height - 80, 400, 40);
   arrowX = width / 2;
   
   currentRectColor = getRandomColor();

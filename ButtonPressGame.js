@@ -2,7 +2,7 @@
 
 let gaugeValue = 0; // 게이지의 초기값
 let targetGaugeValue = 450; // 특정 값 넘을 때의 목표 게이지 값
-let decreaseRate = 2.5; // 게이지 감소 속도
+let decreaseRate = 2.3; // 게이지 감소 속도
 let timeLimit = 10; // 타임 어택 시간 제한 (초)
 let startTime; // 게임 시작 시간
 let buttonPressed = false; // 버튼이 눌렸는지 여부
