@@ -1,22 +1,26 @@
 let gameStage = 0; // 스테이지 0로 시작
+//let playerName;
 
 function preload(){
   
     //배경이미지 프리로드
-    start = loadImage("images/start.jpeg");
+    start = loadImage("images/start.jpg");
     cleaneyes = loadImage("images/cleaneyes.jpeg");
     introduce = loadImage("images/introduce.jpeg");
+    //nameinput = loadImage("images/nameinput.jpg");
     angry = loadImage("images/angry.jpeg");
     stage1rule = loadImage('images/stage1rule.jpeg');
     stage1fail = loadImage('images/stage1fail.jpeg');
     stage1true = loadImage('images/stage1true.jpeg');
     stage1comment = loadImage('images/stage1comment.jpeg');
-    stage2rule = loadImage('images/stage2rule.jpg');
+    stage2rule = loadImage('images/stage2rule.jpeg');
     stage2fail = loadImage('images/stage2fail.jpeg');
     stage2true = loadImage('images/stage2true.jpeg');
     stage2comment = loadImage('images/stage2comment.jpeg');
+    stage3rule = loadImage('images/stage3rule.jpeg');
     stage3fail = loadImage('images/stage3fail.jpeg');
     stage3true = loadImage('images/stage3true.jpeg');
+    outro = loadImage('images/outro.jpeg');
 
     //스테이지1 이미지 프리로드
     mall1 = loadImage("images/mall1.png");
@@ -36,10 +40,34 @@ function preload(){
     lifeheart = loadImage("images/life.png");
     item = loadImage("images/item.png");
 
+    //스테이지3 프리로드
+    //redImages[0] = loadImage('images/redtalk1.png');
+    //redImages[1] = loadImage('images/redtalk2.png');
+    //redImages[2] = loadImage('images/redtalk3.png');
+    //redImages[3] = loadImage('images/redtalk4.png');
+    //blueImages[0] = loadImage('images/bluetalk1.png')
+    //blueImages[1] = loadImage('images/bluetalk2.png')
+    //blueImages[2] = loadImage('images/bluetalk3.png')
+    //blueImages[3] = loadImage('images/bluetalk4.png')
+    //blueImages[4] = loadImage('images/bluetalk5.png')
+    ys3_1 = loadImage("images/ys3_1.png");
+    sc3_1 = loadImage("images/sc3_1.png");
+    
     }
 
 function setup() {
   createCanvas(980, 530);
+
+  powerMeter = createPowerMeter(width / 2, height - 50, 400, 40);
+  arrowX = width / 2;
+  
+  currentRectColor = getRandomColor();
+
+  player = createPlayer();
+  createItems(10); // 생성되는 아이템값
+
+  //selectRandomImage();
+
 }
 
 function draw() {
@@ -50,15 +78,23 @@ function draw() {
     case 0:
       //시작화면
       image(start,0,0,980,530);
+      //PMGame();
+      //ASGame();
+      //BPGame();
+      //NIstage();
       break;
     
     case 1:
-        image(cleaneyes,0,0,980,530);
-        break;  
-
+      image(cleaneyes,0,0,980,530);
+      break;  
+    
     case 2:
       image(introduce,0,0,980,530);
       break;
+
+    //case 'nameinput':
+      //image(nameinput,0,0,980,530);
+      //break;
 
     case 3:
       image(angry,0,0,980,530);
@@ -127,8 +163,8 @@ function draw() {
       break;
 
     case 17:
-      // 스테이지3 : 공떨어뜨리기 게임
-      //BDGame();
+      // 스테이지3 : 화살표멈추기 게임
+      ASGame();
       break;
       
     case 18:
@@ -143,23 +179,11 @@ function draw() {
       
     case 20:
       // 아웃트로
-      fill(0);
-      textSize(30);
-      text("과연 이 정도 인원만으로 교섭을 성공시킬 수 있을까? 걱정되지만 최선을 다하자!", width / 2, height / 2);
+      image(outro,0,0,980,530);
       break;
       
   }
 }
-
-//function keyPressed() {
-    //if (gamestage = 7,13 && keyCode === ENTER) {
-      //gameStage += 3; // 실패 메시지 페이지로 이동
-     // redraw(); // 실패 페이지에 도달하면 화면을 갱신하여 실패 메시지를 표시
-    //} else {
-      //gameStage += 1;
-      //redraw(); // 실패 페이지에 도달하면 화면을 갱신하여 실패 메시지를 표시
-   // } 
-  //}
 
   function keyPressed() {
     if (keyCode === ENTER) {
@@ -174,7 +198,8 @@ function draw() {
             // 필요한 만큼 계속해서 추가
             case 2:
                 gameStage = 3;
-                break;
+              removeInput();
+              break;
             // 필요한 만큼 계속해서 추가
             case 3:
                 gameStage = 4;
@@ -228,6 +253,9 @@ function draw() {
                 gameStage = 20;
                 break;
             // 더 이상 진행할 스테이지가 없으면 추가하지 않아도 됨
+            case 20:
+                gameStage = 0;
+                break;
             default:
         }
 

@@ -83,17 +83,17 @@ function BPGame() {
         image(ys1_1,150,230,110,150); //영수
       }
 
-      if (gaugeValue >= 100){
-        image(mall1,250,230,130,100);
+      if (gaugeValue >= 50){
+        image(mall1,250,230,130,100); //말풍선1
     }
-      if (gaugeValue >= 250){
-        image(mall2,350,220,160,130);
+      if (gaugeValue >= 200){
+        image(mall2,350,220,160,130); //말풍선2
     }
-      if (gaugeValue >= 400){
-        image(mall3,470,200,230,150);
+      if (gaugeValue >= 350){
+        image(mall3,470,200,230,150); //말풍선3
     }
 
-      if (gaugeValue >= 400){
+      if (gaugeValue >= 350){
         image(sc1_2,730,235,130,150); //사측
     }
         else {

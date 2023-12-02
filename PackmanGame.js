@@ -8,11 +8,51 @@ let lives = 3;
 let timeLimit2 = 15; // 스테이지2 타임 어택 시간 제한 (초)
 let startTime2;
 
-function setup() {
-  createCanvas(980, 530);
-  player = createPlayer();
-  createItems(10); // 생성되는 아이템값
+//function setup() {
+  //createCanvas(980, 530);
+  //player = createPlayer();
+  //createItems(10); // 생성되는 아이템값
+//}
+
+function createPlayer() {
+  return {
+    x: width / 2,
+    y: height - 30,
+    radius: 40,
+    show: function () {
+      //fill(0, 255, 0);
+      //ellipse(this.x, this.y, this.radius * 2, this.radius * 2);
+    
+      if (keyIsDown(UP_ARROW)) {
+        image(yspm_up,this.x, this.y, this.radius * 2, this.radius * 1.5);
+      } else if (keyIsDown(DOWN_ARROW)) {
+        image(yspm_down,this.x, this.y, this.radius * 2, this.radius * 1.5);
+      } else if (keyIsDown(RIGHT_ARROW)) {
+        image(yspm_right,this.x, this.y, this.radius * 2, this.radius * 1.5);
+      } else if (keyIsDown(LEFT_ARROW)) {
+        image(yspm_left,this.x, this.y, this.radius * 2, this.radius * 1.5);
+      } else {
+        image(yspm_up,this.x, this.y, this.radius * 2, this.radius * 1.5);
+      }
+      
+      //image(yspm_up,this.x, this.y, this.radius * 2, this.radius * 1.5);
+      //ellipse(this.x, this.y, this.radius * 2, this.radius * 2);
+    },
+    
+    intersects: function (other) {
+      let d = dist(this.x, this.y, other.x, other.y);
+      return d <= this.radius + other.radius;
+    },
+    
+    move: function (dirX, dirY) {
+      this.x += dirX * 10;
+      this.y += dirY * 10;
+      this.x = constrain(this.x, this.radius, width - this.radius);
+      this.y = constrain(this.y, 60 + this.radius, 430 - this.radius);
+    },
+  };
 }
+
 
 function PMGame() {
   background(123, 104, 90);
@@ -60,44 +100,6 @@ function PMGame() {
 
   }
 
-function createPlayer() {
-  return {
-    x: width / 2,
-    y: height - 30,
-    radius: 40,
-    show: function () {
-      //fill(0, 255, 0);
-      //ellipse(this.x, this.y, this.radius * 2, this.radius * 2);
-    
-      if (keyIsDown(UP_ARROW)) {
-        image(yspm_up,this.x, this.y, this.radius * 2, this.radius * 1.5);
-      } else if (keyIsDown(DOWN_ARROW)) {
-        image(yspm_down,this.x, this.y, this.radius * 2, this.radius * 1.5);
-      } else if (keyIsDown(RIGHT_ARROW)) {
-        image(yspm_right,this.x, this.y, this.radius * 2, this.radius * 1.5);
-      } else if (keyIsDown(LEFT_ARROW)) {
-        image(yspm_left,this.x, this.y, this.radius * 2, this.radius * 1.5);
-      } else {
-        image(yspm_up,this.x, this.y, this.radius * 2, this.radius * 1.5);
-      }
-      
-      //image(yspm_up,this.x, this.y, this.radius * 2, this.radius * 1.5);
-      //ellipse(this.x, this.y, this.radius * 2, this.radius * 2);
-    },
-    
-    intersects: function (other) {
-      let d = dist(this.x, this.y, other.x, other.y);
-      return d <= this.radius + other.radius;
-    },
-    
-    move: function (dirX, dirY) {
-      this.x += dirX * 12;
-      this.y += dirY * 12;
-      this.x = constrain(this.x, this.radius, width - this.radius);
-      this.y = constrain(this.y, 60 + this.radius, 430 - this.radius);
-    },
-  };
-}
 
 function createItems(count) {
   for (let i = 0; i < count; i++) {
@@ -115,6 +117,7 @@ function createItems(count) {
 }
 
 function handleGame() {
+  //console.log(player);
   player.show();
   handlePlayerMovement();
 
@@ -177,7 +180,7 @@ function createVillain() {
       this.y = constrain(this.y, 100, 330);
     },
     move: function () {
-      this.x -= 15; // 왼쪽으로 이동
+      this.x -= 13; // 왼쪽으로 이동
     },
 
   };
@@ -185,7 +188,7 @@ function createVillain() {
 
 function handleVillains() {
   // 프레임당 2%의 확률로 빌런 생성
-  if (random(0, 1) < 0.03) {
+  if (random(0, 1) < 0.02) {
     villains.push(createVillain());
   }
 
