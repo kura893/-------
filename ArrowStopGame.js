@@ -60,7 +60,7 @@ function ASGame() {
   }
 
   // Check for game over
-  if (chances === 0) {
+  if (chances === 0 && totalScore < targetScore) {
     gameOver();
   }
 
